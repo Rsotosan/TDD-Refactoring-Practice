@@ -43,8 +43,8 @@ public class RegistryTest {
         Board board = new Board();
         Turn turn = new Turn(board);
         registry.register(board, turn);
-        Object[] array = registry.undo();
-        assertThat(array[0], equalToObject(board));
-        assertThat(array[1], equalToObject(turn));
+        Memento memento = registry.undo();
+        assertThat(memento.getBoard(), equalToObject(board));
+        assertThat(memento.getTurn(), equalToObject(turn));
     }
 }

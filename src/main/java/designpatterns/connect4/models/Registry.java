@@ -27,7 +27,7 @@ public class Registry {
         n = 0;
     }
 
-    public Object[] undo() {
-        return new Object[] {mementos.get(n-1).getBoard(), mementos.get(n-1).getTurn()};
+    public Memento undo() {
+        return mementos.get(n-1);
     }
 }
