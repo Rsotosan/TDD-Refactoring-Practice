@@ -63,5 +63,6 @@ public class Game {
     }
 
     public void setMemento(Memento memento) {
+        this.turn = memento.getTurn();
     }
 }
