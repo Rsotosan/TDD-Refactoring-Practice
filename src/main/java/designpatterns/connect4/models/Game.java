@@ -62,4 +62,6 @@ public class Game {
         } else return turn.equals(other.turn);
     }
 
+    public void setMemento(Memento memento) {
+    }
 }

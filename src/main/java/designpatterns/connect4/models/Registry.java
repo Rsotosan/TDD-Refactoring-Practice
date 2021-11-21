@@ -6,8 +6,6 @@ import java.util.List;
 public class Registry {
 
     private List<Memento> mementos;
-    private List<Board> boards;
-    private List<Turn> turns;
     private int n;
 
     public Registry(){
@@ -28,6 +26,8 @@ public class Registry {
     }
 
     public Memento undo() {
-        return mementos.get(n-1);
+        assert n>0;
+        n--;
+        return mementos.get(n);
     }
 }

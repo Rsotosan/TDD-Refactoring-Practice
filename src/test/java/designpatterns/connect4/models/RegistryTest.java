@@ -52,8 +52,10 @@ public class RegistryTest {
         Registry registry = new Registry();
         Board board = new Board();
         Turn turn = new Turn(board);
+        Board board2 = new Board();
+        Turn turn2 = new Turn(board);
         registry.register(board, turn);
-        registry.register(new Board(), new Turn(new Board()));
+        registry.register(board2, turn2);
         registry.undo();
         Memento memento = registry.undo();
         assertThat(memento.getBoard(), equalToObject(board));
