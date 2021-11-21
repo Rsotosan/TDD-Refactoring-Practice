@@ -13,4 +13,8 @@ public class Registry {
     public void register(Board board, Turn turn) {
         n++;
     }
+
+    public void reset(){
+
+    }
 }
