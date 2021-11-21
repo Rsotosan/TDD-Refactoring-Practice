@@ -10,8 +10,7 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import static org.hamcrest.MatcherAssert.assertThat;
-import static org.hamcrest.Matchers.equalToObject;
-import static org.hamcrest.Matchers.is;
+import static org.hamcrest.Matchers.*;
 
 public class RegistryTest {
 
@@ -43,6 +42,19 @@ public class RegistryTest {
         Board board = new Board();
         Turn turn = new Turn(board);
         registry.register(board, turn);
+        Memento memento = registry.undo();
+        assertThat(memento.getBoard(), equalToObject(board));
+        assertThat(memento.getTurn(), equalToObject(turn));
+    }
+
+    @Test
+    public void givenRegistryWhenUndoTwoTimesThenGetBoardAndTurn(){
+        Registry registry = new Registry();
+        Board board = new Board();
+        Turn turn = new Turn(board);
+        registry.register(board, turn);
+        registry.register(new Board(), new Turn(new Board()));
+        registry.undo();
         Memento memento = registry.undo();
         assertThat(memento.getBoard(), equalToObject(board));
         assertThat(memento.getTurn(), equalToObject(turn));
