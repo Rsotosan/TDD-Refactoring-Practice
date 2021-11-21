@@ -15,6 +15,10 @@ public class Registry {
     }
 
     public void reset(){
+        n = 0;
+    }
 
+    public Object[] undo() {
+        return new Object[]{null, null};
     }
 }

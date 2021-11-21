@@ -10,6 +10,7 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import static org.hamcrest.MatcherAssert.assertThat;
+import static org.hamcrest.Matchers.equalToObject;
 import static org.hamcrest.Matchers.is;
 
 public class RegistryTest {
@@ -34,5 +35,16 @@ public class RegistryTest {
         registry.register(board, new Turn(board));
         registry.reset();
         assertThat(registry.isUndoable(), is(false));
+    }
+
+    @Test
+    public void givenRegistryWhenUndoThenGetBoardAndTurn(){
+        Registry registry = new Registry();
+        Board board = new Board();
+        Turn turn = new Turn(board);
+        registry.register(board, turn);
+        Object[] array = registry.undo();
+        assertThat(array[0], equalToObject(board));
+        assertThat(array[1], equalToObject(turn));
     }
 }
