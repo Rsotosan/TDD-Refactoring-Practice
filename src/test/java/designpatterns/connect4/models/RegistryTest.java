@@ -18,4 +18,12 @@ public class RegistryTest {
     public void givenNewRegistryWhenIsUndoableThenFalse(){
         assertThat(new Registry().isUndoable(), is(false));
     }
+
+    @Test
+    public void givenRegistryUndoableWhenIsUndoableThenTrue(){
+        Registry registry = new Registry();
+        Board board = new Board();
+        registry.register(board, new Turn(board));
+        assertThat(registry.isUndoable(), is(true));
+    }
 }
